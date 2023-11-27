@@ -11,7 +11,7 @@ public class MyArrayList {
         Arrays.fill(arr,2,4, 25);
         Arrays.fill(arr2,1);
 //        int[] arr2 = Arrays.copyOf(arr, 10);
-//        System.out.println(Arrays.toString(arr2));
+        System.out.println(Arrays.toString(arr));
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Zaur");
         arrayList.add("Zaur");
@@ -19,15 +19,18 @@ public class MyArrayList {
 //        System.out.println(arrayList);
         ArrayList<String> arrayList2 = new ArrayList<>(arrayList);
         List<Integer> arrayList3 = Stream.of(arr).collect(Collectors.toList());
-        List<Integer> arrayList4 = Arrays.asList(arr);
+        List<Integer> arrayList4 = new ArrayList<>(Arrays.asList(arr));
+        arrayList4.add(6);
         List<Integer> arrayList5 = Stream.of(arr).collect(Collectors.toList());
+        arrayList5.add(6);
         List<Integer> arrayList6 = new ArrayList<>(Arrays.stream(arr2).boxed().toList());
+        arrayList5.removeAll(arrayList4);
 //        System.out.println(arrayList2);
 //        System.out.println(arrayList==arrayList2);
 //        System.out.println(arrayList.containsAll(arrayList2));
 //        System.out.println(arrayList3);
-//        System.out.println(arrayList4);
-//        System.out.println(arrayList5);
+        System.out.println(arrayList4);
+        System.out.println(arrayList5);
         arrayList6.add(6);
 //        System.out.print(arrayList6);
         Collections.sort(arrayList);
@@ -71,9 +74,31 @@ public class MyArrayList {
  * при таком удалении обязательно нужно переписывать сравнение
  */
         Students men5 = (new Students(28,2,"Igor", "Kromvel"));
-        students.remove(men5);
+//        students.remove(men5);
 //        System.out.println(students);
-
+        /**
+         * indexOf при таком поиске обязательно нужно переписывать сравнение
+         */
+        System.out.println(students.indexOf(men5));
+        /**
+         * sublist
+         */
+//        List<Students> arr6 = students.subList(1,3);
+//        System.out.println(arr6);
+//        arr6.add(new Students(29,2,"Igor", "Kromvel"));
+//        System.out.println(arr6 +" "+students);
+        List<Students> arr7 = new ArrayList<>(students.subList(1,3));
+        System.out.println(arr7);
+        arr7.add(new Students(29,2,"Igor", "Kromvel"));
+        System.out.println(arr7 +"==================="+students);
+//        ===============================================================================================
+        arrayList3.addAll(arrayList4);
+//        System.out.println(arrayList3 + "Merge");
+        /**
+         * not modify and not null
+         */
+        List<Integer> listof = List.of(3,2,8);
+        List<Integer> aslist = List.copyOf(listof);
     }
 }
 class Students{
