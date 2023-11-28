@@ -17,6 +17,16 @@ public class MyArrayList {
         arrayList.add("Zaur");
         arrayList.add("Zaur");
 //        System.out.println(arrayList);
+        /**
+         * mistake
+         */
+//        List<Integer> arr8 = Arrays.asList(1,2,5,6,4);
+//        System.out.println("Arr8" + arr8);
+//        arr8.add(5);
+//        System.out.println("Arr8.1" + arr8);
+        /**
+         * different ways of fill
+         */
         ArrayList<String> arrayList2 = new ArrayList<>(arrayList);
         List<Integer> arrayList3 = Stream.of(arr).collect(Collectors.toList());
         List<Integer> arrayList4 = new ArrayList<>(Arrays.asList(arr));
