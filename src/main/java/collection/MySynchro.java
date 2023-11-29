@@ -50,12 +50,12 @@ public class MySynchro {
          * with synchro & without mistake
          */
        List<Integer> source1 = Collections.synchronizedList(new ArrayList<>());;
-        source.add(1);
-        source.add(2);
-        source.add(3);
-        source.add(14);
+        source1.add(1);
+        source1.add(2);
+        source1.add(3);
+        source1.add(14);
         Runnable runnable1 = ()->{
-            synchronized (synchList) {
+            synchronized (source1) {
                 Iterator<Integer> i = source1.iterator();
                 while (i.hasNext()) {
                     System.out.println(i.next());
