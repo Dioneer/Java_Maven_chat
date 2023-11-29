@@ -1,5 +1,6 @@
 package collection.myset;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collector;
@@ -47,5 +48,18 @@ class Student implements Comparable<Student> {
             res = this.course-o.course;
         }
         return res;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return course == student.course && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, course);
     }
 }
