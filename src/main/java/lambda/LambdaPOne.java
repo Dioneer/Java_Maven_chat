@@ -1,6 +1,7 @@
 package lambda;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LambdaPOne {
     public static void main(String[] args) {
