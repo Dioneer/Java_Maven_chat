@@ -14,10 +14,13 @@ public class ThreadStart {
         /**
          *multi
          */
-        MyThread mt1 = new MyThread();
-        mt1.start();
-        MyThread2 mt2 = new MyThread2();
-        mt2.start();
+//        MyThread mt1 = new MyThread();
+//        mt1.start();
+//        MyThread2 mt2 = new MyThread2();
+//        mt2.start();
+        MyThread3 mt3 = new MyThread3();
+        Thread tr1 = new Thread(mt3);
+        tr1.start();
     }
 }
 class MyThread extends Thread{
@@ -28,6 +31,13 @@ class MyThread extends Thread{
     }
 }
 class MyThread2 extends Thread{
+    public void run(){
+        for (int i = 50; i <= 100; i++) {
+            System.out.print(i+" ");
+        }
+    }
+}
+class MyThread3 implements Runnable{
     public void run(){
         for (int i = 50; i <= 100; i++) {
             System.out.print(i+" ");
