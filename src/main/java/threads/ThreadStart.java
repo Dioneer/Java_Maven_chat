@@ -1,4 +1,4 @@
-package collection.threads;
+package threads;
 
 public class ThreadStart {
     public static void main(String[] args) {
