@@ -17,7 +17,15 @@ public class MyMaptointParllel {
         st.add(st4);
         st.add(st5);
         List<Integer> arr = st.stream().mapToInt(i->i.getAge()).boxed().toList();
-        System.out.println(arr);
+        int sum =  st.stream().mapToInt(i->i.getAge()).sum();
+        double avg =  st.stream().mapToInt(i->i.getAge()).average().getAsDouble();
+        System.out.println(arr+"---"+sum+"---"+avg);
 
+        List<Double> list = new ArrayList<>();
+        list.add(10.0);list.add(11.0);list.add(12.0);list.add(13.0);list.add(14.0);
+        double sumresult = list.stream().reduce(Double::sum).get();
+        double sumresult2 = list.parallelStream().reduce(Double::sum).get();
+        System.out.println("sumResult=" + sumresult);
+        System.out.println("sumResult2=" + sumresult2);
     }
 }
