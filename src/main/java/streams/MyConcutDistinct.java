@@ -1,5 +1,7 @@
 package streams;
 
+import algorithms.SortUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,10 +18,11 @@ public class MyConcutDistinct {
         }
         ArrayList<Integer> arr2 = new ArrayList<>();
         for (int i = 5; i < 10; i++) {
-            arr1.add(i);
+            arr2.add(i);
         }
         Stream<Integer> stream3 = Stream.concat(arr1.stream(), arr2.stream());
         List<Integer> arr3 = stream3.toList();
+        System.out.println("Distinct - " + arr1.stream().distinct().count());
         System.out.println(arr3);
         arr3.stream().distinct().forEach(System.out::print);
     }
