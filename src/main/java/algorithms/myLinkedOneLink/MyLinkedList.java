@@ -57,13 +57,13 @@ public class MyLinkedList<T> {
         }
         return node;
     }
-    public void sort(Comparator<T> comparator){
+    public void sort(MyCompare comparator){
         Node node = head;
         while (node != null){
             Node minValue = node;
             Node node2 = node.next;
             while (node2 != null){
-                if(comparator.compare(minValue.value, node2.value) > 0){
+                if(comparator.compare((Employee) minValue.value, (Employee) node2.value) > 0){
                     minValue = node2;
                 }
                 node2 = node2.next;
