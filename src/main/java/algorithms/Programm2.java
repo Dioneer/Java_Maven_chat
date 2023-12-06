@@ -5,6 +5,7 @@ public class Programm2 {
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
         ArrayUtils arrayUtils = new ArrayUtils();
         SortUtils sortUtils = new SortUtils();
+        System.out.println(arrayUtils.prepareArray());
 //        arrayUtils.printArray(arrayUtils.prepareArray());
 //        sortUtils.directSort(arrayUtils.prepareArray());
 //        int rez = sortUtils.binarySearch(arr, 2);
