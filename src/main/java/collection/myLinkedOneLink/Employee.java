@@ -1,4 +1,4 @@
-package algorithms.myLinkedOneLink;
+package collection.myLinkedOneLink;
 
 import java.util.Objects;
 
@@ -32,7 +32,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(name, employee.name) && Objects.equals(age, employee.age);
+        return name.equals(employee.name) && age == employee.age;
     }
 
     @Override

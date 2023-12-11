@@ -1,4 +1,4 @@
-package algorithms.myLinkedOneLink;
+package collection.myLinkedOneLink;
 
 
 public class MyLinkedList<T> {
@@ -6,6 +6,11 @@ public class MyLinkedList<T> {
     public class Node{
         public Node next;
         public T value;
+
+        @Override
+        public String toString() {
+            return "Node{"+"value=" + value + '}';
+        }
     }
     public void addFirst(T value){
         Node node = new Node();
@@ -55,7 +60,7 @@ public class MyLinkedList<T> {
             }
             node = node.next;
         }
-        return node;
+        return null;
     }
     public void sort(MyCompare comparator){
         Node node = head;

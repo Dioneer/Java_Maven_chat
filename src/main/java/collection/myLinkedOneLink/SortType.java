@@ -1,4 +1,4 @@
-package algorithms.myLinkedOneLink;
+package collection.myLinkedOneLink;
 
 public enum SortType {
     ASCENDING,
