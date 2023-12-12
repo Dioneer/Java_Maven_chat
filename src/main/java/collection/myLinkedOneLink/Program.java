@@ -15,9 +15,11 @@ public class Program {
         System.out.println(list);
         System.out.println("Find: " +  list.contains(employee2));
         list.sort(new MyCompare(SortType.ASCENDING));
+        System.out.println(list);
         System.out.println("=========================================================");
         System.out.println(list2);
         System.out.println("Find: " +  list2.contains(employee1));
         list2.sort(new MyCompare(SortType.ASCENDING));
+        System.out.println(list2);
     }
 }

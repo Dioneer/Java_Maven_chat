@@ -17,12 +17,12 @@ public class ForTest {
         for (int i = 0; i < arr.length; i++) {
             int min = i;
             for (int j = i+1; j < arr.length; j++) {
-                if(arr[min]< arr[j]){
+                if(arr[min]>arr[j]){
                     min = j;
                 }
             }
             int tempo = arr[i];
-            arr[i] = arr[min];
+            arr[i]=arr[min];
             arr[min] = tempo;
         }
         System.out.println(Arrays.toString(arr));
@@ -30,89 +30,93 @@ public class ForTest {
     private static void quickSort(int[] arr, int start, int end){
         int left = start;
         int right = end;
-        int middle = arr[(left+right)/2];
+        int middle = arr[(start+end)/2];
+
         do{
-            while (arr[left]<middle){
+            while(arr[left] < middle){
                 left++;
             }
-            while (arr[right]>middle){
+            while(arr[right] > middle){
                 right--;
             }
             if(left<=right){
                 if(left<right){
                     int tempo = arr[left];
-                    arr[left] = arr[right];
+                    arr[left]=arr[right];
                     arr[right] = tempo;
                 }
                 left++;
                 right--;
             }
-        }
-        while (left<=right);
+        }while (left<=right);
 
         if(left<end){
             quickSort(arr, left, end);
         }
-        if(right>start){
-            quickSort(arr, start, right);
+        if(start<right){
+            quickSort(arr, start,right);
         }
         System.out.println(Arrays.toString(arr));
     }
-    public static void binarySearch(int[] array, int item){
+    public static void binarySearch(int[] arr, int item){
        int left = 0;
-       int right = array.length-1;
+       int right = arr.length-1;
 
-       while(left<=right){
-           int mid = (left+right)/2;
-           if(array[mid] == item){
-               System.out.println(mid);
-               return;}
-           if(array[mid] < item){left = mid+1;}
-           if(array[mid] > item){right = mid-1;}
+       while (left<=right){
+           int middle = (left+right)/2;
+           if(arr[middle]<item){
+               left = middle+1;
+           }
+           if(arr[middle]>item){
+               right = middle-1;
+           }
+           if(arr[middle]==item){
+               System.out.println(middle);
+               return;
+           }
        }
         System.out.println(-1);
     }
-    private static void heapify(int[] array, int i, int size){
+    private static void heapify(int[] arr, int i, int size){
        int left = i*2+1;
-       int right = i*2+2;
-       int largest = i;
+        int right = i*2+2;
+        int largest = i;
 
-       if(left<size&&array[left]>array[largest]){
-           largest = left;
-       }
-        if(right<size&&array[right]>array[largest]){
+        if(left<size && arr[left]> arr[largest]){
+            largest = left;
+        }
+        if(right<size && arr[right]> arr[largest]){
             largest = right;
         }
-        if(largest!=i){
-            int tempo = array[i];
-            array[i] = array[largest];
-            array[largest] = tempo;
-            heapify(array, largest, size);
+        if(largest != i){
+            int tempo = arr[i];
+            arr[i]=arr[largest];
+            arr[largest] = tempo;
+            heapify(arr, largest, size);
         }
     }
-    public static void heapSort(int[] array){
-        for (int i = array.length/2-1; i >=0 ; i--) {
-            heapify(array, i, array.length);
+    public static void heapSort(int[] arr){
+        for (int i = arr.length/2-1; i >=0 ; i--) {
+            heapify(arr, i, arr.length-1);
         }
-        for (int i = array.length-1; i >=0 ; i--) {
-            int tempo = array[i];
-            array[i] = array[0];
-            array[0] = tempo;
-            heapify(array, 0, i);
+        for (int i = arr.length-1; i >=0 ; i--) {
+            int tempo = arr[i];
+            arr[i]=arr[0];
+            arr[0] = tempo;
+            heapify(arr, 0, i);
         }
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(arr));
     }
     public static int secondMinItem(int[] arr){
         int min = arr[0];
         int min2 = Integer.MAX_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            if(min> arr[i]){
-                min2 = min;
-                min = arr[i];
-            } else if(arr[i] < min2 && arr[i] != min){
+        for (int i = 1; i < arr.length; i++) {
+            if(arr[i]< min){
+                min2=min;
+                min=arr[i];
+            }else if(arr[i]< min2 && arr[i] != min){
                 min2 = arr[i];
             }
-
         }
         return min2;
     }
