@@ -6,7 +6,7 @@ public class ForTest {
     public static void main(String[] args) {
         int[] arr = {-83,-79,-77,-63,-55,-37, 30,39,41,47,48,76,96,-17,-13,-8,-1,7,9};
         int[] arr2 = {-83,-79,-77,-63,-55,-37,-17,-13,-8,-1,7,9,30,39,41,47,48,76,96};
-//        directSort(arr);
+        directSort(arr);
 //        quickSort(arr, 0, arr.length-1);
 //        binarySearch(arr2, 96);
 //        heapSort(arr);
