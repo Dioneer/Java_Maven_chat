@@ -77,5 +77,12 @@ public class Manager {
                 break;
         }
     }
+    static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
+        SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<>(
+                Map.Entry.comparingByValue()
+        );
+        sortedEntries.addAll(map.entrySet());
+        return sortedEntries;
+    }
 
 }
