@@ -12,7 +12,7 @@ public class ThreadExample extends Thread{
     public static void main(String[] args) {
         ThreadExample threadExample1 = new ThreadExample("Stream 1");
         threadExample1.setPriority(Thread.MAX_PRIORITY);
-        threadExample1.start();
+            threadExample1.start();
         ThreadExample threadExample2 = new ThreadExample("Stream 2");
         threadExample2.setPriority(Thread.NORM_PRIORITY);
         threadExample2.start();
