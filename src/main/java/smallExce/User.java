@@ -2,9 +2,10 @@ package smallExce;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Objects;
 
-public class User {
+public class User{
     private String login;
     private String password;
     private String dateTime;
@@ -14,7 +15,7 @@ public class User {
         LocalDateTime now = LocalDateTime.now();
         this.login = login;
         this.password = password;
-        this.dateTime = now.format(formatter );
+        this.dateTime = now.format(formatter);
     }
 
     public String getLogin() {
@@ -31,6 +32,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDateTime() {
+        return dateTime;
     }
 
     @Override
@@ -54,4 +59,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(login, password, dateTime);
     }
+
 }

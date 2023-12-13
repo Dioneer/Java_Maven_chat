@@ -40,6 +40,8 @@ public class Start {
         manager.login("Loraa", "123456");
         manager.delUser("Lora");
         manager.showUsers();
+        manager.sortedUsers("login");
+        manager.sortedUsers("date");
     }
     public static void getVoice(Animal animal){
         animal.voice();

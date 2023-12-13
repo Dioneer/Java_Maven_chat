@@ -64,5 +64,18 @@ public class Manager {
                System.out.println(item);
         }
     }
+    public void sortedUsers(String type){
+        List<User>arr = new ArrayList<>(users.values());
+        switch (type) {
+            case "login":
+                arr.sort(new LoginComparator());
+                System.out.println(arr);
+                break;
+            case "date":
+                arr.sort(new DataComparator());
+                System.out.println(arr);
+                break;
+        }
+    }
 
 }
