@@ -1,6 +1,5 @@
-package threads;
+package nested.threads;
 
-import java.security.PrivateKey;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
