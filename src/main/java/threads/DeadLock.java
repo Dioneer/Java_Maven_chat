@@ -1,4 +1,4 @@
-package nested.threads;
+package threads;
 
 public class DeadLock {
     static class Fried{

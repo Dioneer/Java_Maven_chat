@@ -1,4 +1,4 @@
-package nested.threads;
+package threads;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;

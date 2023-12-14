@@ -1,4 +1,4 @@
-package nested.threads;
+package threads;
 
 public class ThreadExample extends Thread{
     private final String name;

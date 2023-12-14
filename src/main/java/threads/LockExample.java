@@ -1,4 +1,4 @@
-package nested.threads;
+package threads;
 
 import java.util.concurrent.locks.ReentrantLock;
 
