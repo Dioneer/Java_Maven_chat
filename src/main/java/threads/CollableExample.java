@@ -13,7 +13,7 @@ public class CollableExample implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println("Word length is: " + word.length());
-        return Integer.valueOf(word.length());
+        return word.length();
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
