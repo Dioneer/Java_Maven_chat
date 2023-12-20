@@ -30,12 +30,12 @@ public class ForTest {
     private static void quickSort(int[] arr, int start, int end){
         int left = start;
         int right = end;
-        int middle = arr[(start+end)/2];
+        int mid = arr[(start+end)/2];
         do{
-            while(arr[left]<middle){
+            while(arr[left]<mid){
                 left++;
             }
-            while(arr[right]>middle){
+            while(arr[right]>mid){
                 right--;
             }
             if(left<=right){
@@ -47,12 +47,11 @@ public class ForTest {
                 left++;
                 right--;
             }
-        }while(left<=right);
-
+        }while (left<=right);
         if(left<end){
             quickSort(arr, left,end);
         }
-        if(start<right){
+        if(right>start){
             quickSort(arr, start,right);
         }
         System.out.println(Arrays.toString(arr));
@@ -60,40 +59,40 @@ public class ForTest {
     public static void binarySearch(int[] arr, int item){
        int left = 0;
        int right = arr.length-1;
-       while(left<=right){
-           int middle = (left+right)/2;
-           if(arr[middle]==item) {
-               System.out.println(middle);
+       while (left<=right){
+           int mid = (left+right)/2;
+           if(arr[mid]==item){
+               System.out.println(mid);
                return;
            }
-           if(arr[middle]>item) {
-               left = middle+1;
+           if(arr[mid]<item){
+               left = mid+1;
            }
-           if(arr[middle]<item) {
-               right = middle-1;
+           if(arr[mid]>item){
+               right = mid-1;
            }
        }
         System.out.println(-1);
     }
     private static void heapify(int[] arr, int i, int size){
-       int left=i*2+1;
+       int left = i*2+1;
        int right = i*2+2;
        int largest = i;
-       if(left<size && arr[left]> arr[largest]){
+       if(left<size&&arr[left]>arr[largest]){
            largest = left;
        }
-        if(right<size && arr[right]> arr[largest]){
+        if(right<size&&arr[right]>arr[largest]){
             largest = right;
         }
         if(largest!=i){
             int tempo = arr[i];
             arr[i] = arr[largest];
             arr[largest] = tempo;
-            heapify(arr, largest,size);
+            heapify(arr, largest, size);
         }
     }
     public static void heapSort(int[] arr){
-        for (int i = arr.length/2-1; i >=0 ; i--) {
+        for (int i = arr.length/2-1; i >=0 ; i--){
             heapify(arr, i, arr.length);
         }
         for (int i = arr.length-1; i >=0 ; i--) {
