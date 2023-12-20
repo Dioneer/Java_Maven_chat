@@ -20,7 +20,9 @@ public class SocketClient {
                     System.out.println("Server answer: " + dis.readUTF());
             }
         } catch (IOException e) {
-            System.out.println("You chat is finish");
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Your chat is finish");
         }
     }
 }

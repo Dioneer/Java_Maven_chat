@@ -18,13 +18,14 @@ public class SocketServer {
                         DataInputStream dis = new DataInputStream(socket.getInputStream());
                         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                         Scanner scanner = new Scanner(System.in)){
-                        String st = "";
-                        while (!(st=dis.readUTF()).equals("close")) {
+                        String st = dis.readUTF();
+                        while (!st.equals("close")) {
                             System.out.println("Get your message: " + st);
                             System.out.println("Enter you answer: ");
                             String answer = scanner.nextLine();
                             dos.writeUTF(answer);
                             dos.flush();
+                            st=dis.readUTF();
                         }
                     }catch (IOException e) {
                         throw new RuntimeException(e);
