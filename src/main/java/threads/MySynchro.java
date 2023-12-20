@@ -14,7 +14,7 @@ public class MySynchro {
     public static void main(String[] args) throws InterruptedException {
         ExecutorService pool = Executors.newFixedThreadPool(3);
 //        for (int i = 0; i < 6; i++) {
-            pool.submit(test1());
+//            pool.submit(test1());
 //            Thread.sleep(1000);
 //        }
         pool.shutdown();
@@ -23,7 +23,6 @@ public class MySynchro {
                 System.out.println(Thread.currentThread().getName());
             }
         };
-        pool.submit(runnable);
         Thread th1 = new Thread(runnable);
         th1.start();
         Thread th2 = new Thread(runnable);
