@@ -18,10 +18,9 @@ public class func1 {
 
         forEach(clients, c->c.setSum(c.getSum()-2));
         print(clients);
-        print(map(clients, new Action2<Client, Object>() {
-
+        print(map(clients, new Action2<Client, String>() {
             @Override
-            public Object apply(Client arg) {
+            public String apply(Client arg) {
                 return arg.getName();
             }
         }));
