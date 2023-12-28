@@ -30,12 +30,12 @@ public class ForTest {
     private static void quickSort(int[] arr, int start, int end){
         int left = start;
         int right = end;
-        int mid = arr[(start+end)/2];
+        int middle = arr[(left+right)/2];
         do{
-            while(arr[left]<mid){
+            while (arr[left]<middle){
                 left++;
             }
-            while(arr[right]>mid){
+            while (arr[right]>middle){
                 right--;
             }
             if(left<=right){
@@ -47,13 +47,9 @@ public class ForTest {
                 left++;
                 right--;
             }
-        }while (left<=right);
-        if(left<end){
-            quickSort(arr, left,end);
-        }
-        if(right>start){
-            quickSort(arr, start,right);
-        }
+        }while (left<right);
+        if(left<end) quickSort(arr, left, end);
+        if(start<right) quickSort(arr, start, right);
         System.out.println(Arrays.toString(arr));
     }
     public static void binarySearch(int[] arr, int item){
@@ -61,16 +57,12 @@ public class ForTest {
        int right = arr.length-1;
        while (left<=right){
            int mid = (left+right)/2;
-           if(arr[mid]==item){
+           if(arr[mid]== item) {
                System.out.println(mid);
                return;
            }
-           if(arr[mid]<item){
-               left = mid+1;
-           }
-           if(arr[mid]>item){
-               right = mid-1;
-           }
+           if(arr[mid]<item) left = mid+1;
+           if(arr[mid]>item) right = mid-1;
        }
         System.out.println(-1);
     }
@@ -85,14 +77,14 @@ public class ForTest {
             largest = right;
         }
         if(largest!=i){
-            int tempo = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = tempo;
+            int tempo = arr[largest];
+            arr[largest] = arr[i];
+            arr[i] = tempo;
             heapify(arr, largest, size);
         }
     }
     public static void heapSort(int[] arr){
-        for (int i = arr.length/2-1; i >=0 ; i--){
+        for (int i = arr.length/2-1; i >= 0; i--) {
             heapify(arr, i, arr.length);
         }
         for (int i = arr.length-1; i >=0 ; i--) {
