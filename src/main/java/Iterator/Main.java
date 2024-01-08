@@ -24,37 +24,37 @@ public class Main {
         }
     }
 }
+
 class Rang implements Iterable<Integer>{
     int start;
     int end;
-    public static Rang fromTo(int from, int to){
-        return new Rang(from,to);
-    }
+    public static Rang fromTo(int start, int end){
+       return new Rang(start, end);
+    };
     private Rang(int start, int end) {
         this.start = start;
         this.end = end;
     }
 
     @Override
-    public Iterator iterator() {
-        return new Iterator(start);
+    public Iterator<Integer> iterator() {
+        return new MyIterator(start);
     }
-    class Iterator implements java.util.Iterator<Integer>{
-        int current;
+    class MyIterator implements Iterator<Integer> {
+        int start;
 
-        public Iterator(int current) {
-            this.current = current;
+        public MyIterator(int start) {
+            this.start = start;
         }
 
         @Override
         public boolean hasNext() {
-            return current<=end;
-
+            return start<=end;
         }
 
         @Override
         public Integer next() {
-            return current++;
+            return start++;
         }
     }
 }
