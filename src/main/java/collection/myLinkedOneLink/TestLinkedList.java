@@ -1,5 +1,7 @@
 package collection.myLinkedOneLink;
 
+import javax.management.modelmbean.ModelMBeanNotificationBroadcaster;
+
 public class TestLinkedList<T> {
     Node head;
     class Node{
@@ -16,7 +18,7 @@ public class TestLinkedList<T> {
     public void addFirst(T value){
         Node node = new Node();
         node.value = value;
-        if (head != null) {
+        if(head!=null){
             node.next = head;
         }
         head = node;
@@ -24,75 +26,78 @@ public class TestLinkedList<T> {
     public void addLast(T value){
         Node node = new Node();
         node.value = value;
-        if (head == null) {
-            head = node;
-        } else{
+        if(head == null){
+            head=node;
+        }else {
             Node last = head;
-            while (last.next !=null){
-               last = last.next;
+            while (last.next != null) {
+                last = last.next;
             }
-            last.next=node;
+            last.next = head;
         }
     }
     public void removeLast(){
-        if(head != null){
+        if(head!=null){
             Node last = head;
-            while (last.next !=null){
-                if(last.next.next ==null){
-                    last.next = null;
+            while (last.next!=null){
+                if(last.next.next==null){
+                    last.next=null;
                     return;
                 }
-                last = last.next;
+                last.next = head;
             }
+            head=null;
         }
-        head=null;
     }
     public void removeFirst(){
-        if(head != null){
-            head = head.next;
+        if(head!=null){
+            head=head.next;
         }
     }
     public Node contains(T values){
-        Node last = head;
-        while (last!=null){
-            if(last.value.equals(values)){
-                return last;
+        if(head!=null) {
+            Node last = head;
+            while (last != null) {
+                if(last.value.equals(values)){
+                    return last;
+                }
+                last = last.next;
             }
-            last = last.next;
         }
         return null;
     }
     public void sort(MyCompare comparator){
         Node node = head;
         while (node != null){
-            Node minValue = node;
+            Node min = node;
             Node node2 = node.next;
             while (node2 != null){
-                if(comparator.compare((Employee) minValue.value, (Employee) node2.value) > 0){
-                    minValue = node2;
+                if(comparator.compare((Employee) min.value,(Employee) node2.value)>0){
+                    min=node2;
                 }
                 node2 = node2.next;
             }
-            if(minValue != node){
-                T buff = node.value;
-                node.value = minValue.value;
-                minValue.value = buff;
+            if(min!=node){
+                T tempo = node.value;
+                node.value = min.value;
+                min.value = tempo;
             }
+
             node = node.next;
         }
     }
     public void Reverse() {
         Node node = head;
-        Node temp;
-        Node prevNode = null;
+        Node tempo;
+        Node prev = null;
+        while (node != null){
+            tempo = node.next;
+            node.next = prev;
+            prev=node;
 
-        while (node != null) {
-            temp = node.next;
-            node.next = prevNode;
-            prevNode = node;
-            node = temp;
+            node = tempo;
         }
-        head = prevNode;
+        head = prev;
     }
     @Override
     public String toString() {
