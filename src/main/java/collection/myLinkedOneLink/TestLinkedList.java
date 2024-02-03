@@ -1,23 +1,22 @@
 package collection.myLinkedOneLink;
 
 public class TestLinkedList<T> {
-   Node head;
-   class Node{
-       Node next;
-       T value;
-
-       @Override
-       public String toString() {
-           return "Node{" +
-                   "next=" + next +
-                   ", value=" + value +
-                   '}';
-       }
-   }
+    Node head;
+    class Node{
+        T value;
+        Node next;
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "value=" + value +
+                    ", next=" + next +
+                    '}';
+        }
+    }
     public void addFirst(T value){
         Node node = new Node();
         node.value = value;
-        if(head != null){
+        if (head != null) {
             node.next = head;
         }
         head = node;
@@ -25,37 +24,37 @@ public class TestLinkedList<T> {
     public void addLast(T value){
         Node node = new Node();
         node.value = value;
-        if(head == null){
+        if (head == null) {
             head = node;
-        }else{
+        } else{
             Node last = head;
-            while (last.next!=null){
-                last = last.next;
+            while (last.next !=null){
+               last = last.next;
             }
-            last.next = node;
+            last.next=node;
         }
-   }
+    }
     public void removeLast(){
-        Node last = head;
-        if(head == null){
-            while (last.next!=null){
-                if(last.next.next==null){
+        if(head != null){
+            Node last = head;
+            while (last.next !=null){
+                if(last.next.next ==null){
                     last.next = null;
                     return;
                 }
                 last = last.next;
             }
         }
+        head=null;
     }
     public void removeFirst(){
         if(head != null){
-            Node last = head;
-            head = last.next;
+            head = head.next;
         }
     }
     public Node contains(T values){
         Node last = head;
-        while (last !=null){
+        while (last!=null){
             if(last.value.equals(values)){
                 return last;
             }
@@ -64,38 +63,37 @@ public class TestLinkedList<T> {
         return null;
     }
     public void sort(MyCompare comparator){
-       Node node = head;
+        Node node = head;
         while (node != null){
-            Node min = node;
+            Node minValue = node;
             Node node2 = node.next;
             while (node2 != null){
-                if(comparator.compare((Employee) min.value, (Employee) node2.value)>0){
-                    min = node2;
+                if(comparator.compare((Employee) minValue.value, (Employee) node2.value) > 0){
+                    minValue = node2;
                 }
-                node2=node2.next;
+                node2 = node2.next;
             }
-            if(min != node){
-                T tempo = node.value;
-                node.value = min.value;
-                min.value = tempo;
+            if(minValue != node){
+                T buff = node.value;
+                node.value = minValue.value;
+                minValue.value = buff;
             }
             node = node.next;
         }
     }
     public void Reverse() {
-       Node prev = null;
-       Node tempo;
-       Node node = head;
-        while (node != null){
-            tempo = node.next;
-            node.next = prev;
-            prev = node;
+        Node node = head;
+        Node temp;
+        Node prevNode = null;
 
-            node = tempo;
+        while (node != null) {
+            temp = node.next;
+            node.next = prevNode;
+            prevNode = node;
+            node = temp;
         }
-        head = prev;
+        head = prevNode;
     }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

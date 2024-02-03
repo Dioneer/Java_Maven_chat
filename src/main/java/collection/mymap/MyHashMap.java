@@ -30,6 +30,8 @@ public class MyHashMap {
         map.put(st1, 3.0);
         map.put(st2, 4.4);
         map.put(st3, 5.5);
+        System.out.println("123"+map.entrySet());
+        System.out.println("123"+map.remove(st1));
         System.out.println(map);
         System.out.println(map.get(st4));
 //        for (Map.Entry<Integer, String> items: data.entrySet()){

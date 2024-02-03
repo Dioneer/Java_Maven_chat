@@ -10,12 +10,12 @@ public class ForTest {
 //        quickSort(arr, 0, arr.length-1);
 //        binarySearch(arr2, 96);
 //        heapSort(arr);
-        System.out.println(secondMinItem(arr));
+        secondMinItem(arr);
     }
 
     public static void directSort(int[] arr){
         for (int i = 0; i < arr.length; i++) {
-            int min = i;
+            int min  = i;
             for (int j = i+1; j < arr.length; j++) {
                 if(arr[min]>arr[j]){
                     min = j;
@@ -30,12 +30,12 @@ public class ForTest {
     private static void quickSort(int[] arr, int start, int end){
         int left = start;
         int right = end;
-        int middle = arr[(left+right)/2];
+        int mid = arr[(left+right)/2];
         do{
-            while (arr[left]<middle){
+            while (arr[left]<mid){
                 left++;
             }
-            while (arr[right]>middle){
+            while (arr[right]>mid){
                 right--;
             }
             if(left<=right){
@@ -48,48 +48,40 @@ public class ForTest {
                 right--;
             }
         }while (left<=right);
-        if(left<end){quickSort(arr, left, end);}
-        if(right>start){quickSort(arr, start, right);}
+        if(left<end){quickSort(arr, left,end);}
+        if(right>start){quickSort(arr, start,right);}
         System.out.println(Arrays.toString(arr));
     }
     public static void binarySearch(int[] arr, int item){
-       int left = 0;
-       int right = arr.length-1;
-       while (left<=right){
-           int mid = (left+right)/2;
-           if(arr[mid]==item){
-               System.out.println(mid);
-               return;
-           }
-           if(arr[mid]<item){
-               left=mid+1;
-           }
-           if(arr[mid]>item){
-               right=mid-1;
-           }
-       }
+        int left = 0;
+        int right = arr.length-1;
+        while (left<=right){
+            int mid = (left+right)/2;
+            if(arr[left]<item){left=mid+1;}
+            if(arr[mid]==item){
+                System.out.println(mid);
+                return;
+            }
+            if(arr[right]>item){right=mid-1;}
+        }
         System.out.println(-1);
     }
     private static void heapify(int[] arr, int i, int size){
        int left = i*2+1;
        int right = i*2+2;
-       int largest = i;
-       if(left<size && arr[left]>arr[largest]){
-           largest = left;
-       }
-        if(right<size && arr[right]>arr[largest]){
-            largest = right;
-        }
-        if(largest!=i){
+       int large = i;
+       if(left<size && arr[left]> arr[large]){large=left;}
+        if(right<size && arr[right]> arr[large]){large=right;}
+        if(large!=i){
             int tempo = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = tempo;
-            heapify(arr, largest,size);
+            arr[i] = arr[large];
+            arr[large] = tempo;
+            heapify(arr, large, size);
         }
     }
     public static void heapSort(int[] arr){
         for (int i = arr.length/2-1; i >= 0; i--) {
-            heapify(arr, i,arr.length);
+            heapify(arr, i, arr.length-1);
         }
         for (int i = arr.length-1; i >= 0; i--) {
             int tempo = arr[i];
@@ -99,18 +91,18 @@ public class ForTest {
         }
         System.out.println(Arrays.toString(arr));
     }
-    public static int secondMinItem(int[] arr){
+    public static void secondMinItem(int[] arr){
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
-            if(min1<arr[i]){
+            if(arr[i]<min1){
                 min2 = min1;
                 min1 = arr[i];
-            }else if(arr[i]<min2&&arr[i]!=min1){
+            }else if(arr[i]<min2 && arr[i]!=min1){
                 min2 = arr[i];
             }
         }
-        return min2;
+        System.out.println(min1+"&&"+min2);
     }
 
 }
