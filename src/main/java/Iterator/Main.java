@@ -1,9 +1,6 @@
 package Iterator;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +19,21 @@ public class Main {
         for(int i: Rang.fromTo(5,20)){
             System.out.println(i);
         }
+        /**
+         * палиндром
+         */
+        String s= "maam";
+        List<Character>arr2 = s.chars().mapToObj(i->(char)i).toList();
+        List<Character> arr3 = new LinkedList<>(arr2);
+        System.out.println(arr3);
+        ListIterator<Character> listIterator = arr3.listIterator(0);
+        ListIterator<Character> prev = arr3.listIterator(arr3.size());
+        while(listIterator.hasNext()){
+            if (!listIterator.next().equals(prev.previous())) {
+                System.out.println("false");
+                }
+        }
+        System.out.println("true");
     }
 }
 
@@ -40,6 +52,7 @@ class Rang implements Iterable<Integer>{
     public Iterator<Integer> iterator() {
         return new MyIterator(start);
     }
+
     class MyIterator implements Iterator<Integer> {
         int start;
 
